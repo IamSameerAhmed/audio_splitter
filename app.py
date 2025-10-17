@@ -6,9 +6,14 @@ from io import BytesIO
 from pydub import AudioSegment
 import streamlit as st
 from pydub.utils import which
-AudioSegment.converter = which(r"C:\ffmpeg\bin\ffmpeg.exe")
-AudioSegment.ffprobe = which(r"C:\ffmpeg\bin\ffprobe.exe")
+#AudioSegment.converter = which(r"C:\ffmpeg\bin\ffmpeg.exe")
+#AudioSegment.ffprobe = which(r"C:\ffmpeg\bin\ffprobe.exe")
 
+import os
+from pydub import AudioSegment
+# Ensure ffmpeg is available
+AudioSegment.converter = os.getenv("FFMPEG_BINARY", "ffmpeg")
+AudioSegment.ffprobe = os.getenv("FFMPEG_BINARY", "ffmpeg")
 
 # --------------------
 # CONFIG
